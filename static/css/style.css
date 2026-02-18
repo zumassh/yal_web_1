@@ -2,3 +2,22 @@ p {
     margin: 10px;
     font-size: 48px; color: green;
 }
+
+.mainContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.interactContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.jsForm {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-self: center;
+    gap: 10px;
+}

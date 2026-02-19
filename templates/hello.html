@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Привет, {{ username }}!{% endblock %}
+
+{% block content %}
+<div class="hello-section">
+    <h1>Привет, {{ username }}, {{ age }}!</h1>
+
+    <h3>Твои проекты:</h3>
+    <ul>
+        {% for project in ['PyQT', 'PyArcade', 'Web'] %}
+            <li>{{ project }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

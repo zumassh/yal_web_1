@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% set form_page = true %}
+
+{% block title %}Форма петиции{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Вы не могли бы подписать мою петицию?</h1>
+    
+    <form class="yalForm" method="post">
+        {{ form.hidden_tag() }}  {# Добавляет CSRF токен #}
+        
+        <div class="mainInfo">
+            <div class="form-group">
+                {{ form.name.label }}
+                {{ form.name(class="form-control", placeholder="Введите имя") }}
+                {% if form.name.errors %}
+                    <ul class="errors">
+                        {% for error in form.name.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.surname.label }}
+                {{ form.surname(class="form-control", placeholder="Введите фамилию") }}
+                {% if form.surname.errors %}
+                    <ul class="errors">
+                        {% for error in form.surname.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="formGroup">
+            <label>{{ form.sex.label }}</label>
+            <div class="gender-options">
+                {% for subfield in form.sex %}
+                    <div class="gender">
+                        {{ subfield }}
+                        {{ subfield.label(class="gender-label") }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="form-check">
+            {{ form.sign(class="form-check-input") }}
+            {{ form.sign.label(class="form-check-label") }}
+        </div>
+        
+        <div class="form-actions">
+            {{ form.submit(class="formBtn") }}
+        </div>
+    </form>
+</div>
+{% endblock %}

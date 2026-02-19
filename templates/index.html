@@ -1,0 +1,31 @@
+<!-- div>div.table_container>table.my_table>tr.my_row*5>td*5 -->
+
+{% extends "base.html" %}
+
+{% block title %}Привет, Яндекс!{% endblock %}
+
+{% block content %}
+<div class="welcome-section">
+    <p><i>Добро пожаловать в Яндекс Лицей!</i></p>
+    <img src="{{ url_for('static', filename='img/yal.png') }}" alt="Добро пожаловать в Яндекс Лицей!">
+
+    <div class="interactContainer">
+        <div id="interactElement" style="padding: 20px; margin: 10px; background-color: lightblue;">
+            Сейчас что-то будет...
+        </div>
+        <button id="actionButton">Нажми меня</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('actionButton').onclick = function() {
+        const el = document.getElementById('interactElement');
+        el.style.backgroundColor = '#4CAF50';
+        el.style.color = 'white';
+        el.style.transform = 'scale(1.1)';
+        el.innerHTML = "Всё изменилось.";
+    };
+</script>
+{% endblock %}
